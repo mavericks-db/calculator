@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 * {
     box-sizing: border-box;
 }
 
 .container {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Roboto', sans-serif;
     display: block;
     width: 400px;
     height: 85vh;
@@ -22,7 +21,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
-    gap: 20px;
+    flex-wrap: nowrap;
     width: 370px;
     height: 100px;
     background-color: white;
@@ -33,9 +32,15 @@
     box-shadow: 2px 2px black;
 }
 
-.secDisp {
+.firstDisplay {
+    margin-right: 10px;
     font-size: 25px;
+}
+
+.secondDisplay {
+    font-size: 50px;
     font-weight: bolder;
+    margin-right: 10px;
 }
 
 .secRow {
@@ -45,7 +50,7 @@
 }
 
 .clear {
-    width: 180px;
+    width: 130px;
     height: 50px;
     background-color: white;
     text-align: center;
@@ -53,11 +58,17 @@
     margin-left: 10px;
     margin-bottom: 10px;
     border-radius: 10px;
-    font-size: larger;
+    font-size: 25px;
     box-shadow: 2px 2px black;
 }
+
+.clear:hover {
+    background-color: lightblue;
+    cursor: pointer;
+}
+
 .backspace {
-    width: 180px;
+    width: 230px;
     height: 50px;
     background-color: white;
     text-align: center;
@@ -65,8 +76,13 @@
     margin-right: 10px;
     margin-bottom: 10px;
     border-radius: 10px;
-    font-size: larger;
+    font-size: 25px;
     box-shadow: 2px 2px black;
+}
+
+.backspace:hover {
+    background-color: lightblue;
+    cursor: pointer;
 }
 
 .keypad {
@@ -83,6 +99,12 @@
     border-radius: 10px;
     margin-bottom: 5px;
     box-shadow: 2px 2px black;
+    font-size: 30px;
+}
+
+.keypadBtn:hover {
+    background-color: lightblue;
+    cursor: pointer;
 }
 
 
