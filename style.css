@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    font-family: 'Orbitron', sans-serif;
+    display: block;
+    width: 400px;
+    height: 85vh;
+    background-color: lightslategray;
+    margin: 10px auto;
+    border-radius: 20px;
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px;
+    width: 370px;
+    height: 100px;
+    background-color: white;
+    text-align: right;
+    margin: 10px auto;
+    border-radius: 10px;
+    vertical-align: top;
+    box-shadow: 2px 2px black;
+}
+
+.secDisp {
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.secRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 12px;
+}
+
+.clear {
+    width: 180px;
+    height: 50px;
+    background-color: white;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    font-size: larger;
+    box-shadow: 2px 2px black;
+}
+.backspace {
+    width: 180px;
+    height: 50px;
+    background-color: white;
+    text-align: center;
+    margin-top: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    font-size: larger;
+    box-shadow: 2px 2px black;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: auto auto;
+    margin-left: 11px;
+    column-gap: 2px;
+}
+
+.keypadBtn {
+    width: 85px;
+    height: 80px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    box-shadow: 2px 2px black;
+}
+
+
+
+.footer {
+    background-color: #1F2937;
+    color: #E5E7EB;
+    text-align: center;
+    padding: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #E5E7EB;
+}
