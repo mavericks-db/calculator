@@ -90,7 +90,7 @@
     column-gap: 2px;
 }
 
-.keypadBtn {
+.keypadBtn , .operatorBtn, .equalBtn , .pointBtn {
     width: 85px;
     height: 80px;
     border-radius: 10px;
