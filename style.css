@@ -17,11 +17,8 @@
 }
 
 .display {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-rows: 1fr 2fr;
     width: 370px;
     height: 100px;
     background-color: white;

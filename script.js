@@ -19,7 +19,7 @@ let plus = document.getElementById('plus');
 let firstDisplay = document.getElementById('firstDisplay')
 let secondDisplay = document.getElementById('secondDisplay')
 
-clear.addEventListener('click', reset);
+clear.addEventListener('click', cls);
 backspace.addEventListener('click', removeItem);
 keypad7.addEventListener('click', digit);
 keypad8.addEventListener('click', digit);
@@ -33,93 +33,86 @@ keypad1.addEventListener('click', digit);
 keypad2.addEventListener('click', digit);
 keypad3.addEventListener('click', digit);
 minus.addEventListener('click', operation);
-point.addEventListener('click', digit);
+point.addEventListener('click', decimal);
 keypad0.addEventListener('click', digit);
-equal.addEventListener('click', operate);
+equal.addEventListener('click', checkResult);
 plus.addEventListener('click', operation);
 
-function reset(e) {
+function cls(e) {
     location.reload();
 }
 
-let num = [];
+
 function removeItem() {
-    num = num.slice(0, -1);
-    firstDisplay.innerText = num.join('');
+    secondDisplay.innerText = secondDisplay.innerText.toString().slice(0, -1);
 }
 
+let resetCondition = false;
 function digit(e) {
-    firstDisplay.innerText += e.target.dataset.value;
-    num.push(e.target.dataset.value);
+    if (secondDisplay.innerText === '0' || resetCondition == true) {
+        secondDisplay.innerText = '';
+        resetCondition = false;
+    }
+    secondDisplay.innerText += e.target.dataset.value;
 }
 
-let storeNum1 = [];
-let storeNum2 = [];
-let operator = "";
-
-function operation(e) {
-    if (storeNum1 !== null) {
-        operate();
+function decimal(e) {
+    if (resetCondition == true) {
+        secondDisplay.innerText = '';
+        resetCondition = false;
     }
-    storeNum1.push(...num);
-    storeNum1 = parseInt(storeNum1.join(''));;
-    num = [];
-    operator += e.target.dataset.value;
-    firstDisplay.innerText += operator;
+    if (secondDisplay.innerText === '') {
+        secondDisplay.innerText = '0';
+    }
+    if (secondDisplay.innerText.includes('.')) {
+        return
+    }
+    secondDisplay.innerText += e.target.dataset.value;
+}
+
+let currentOperator = null;
+let storeNum1 = '';
+let storeNum2 = '';
+function operation(e) {
+    if (currentOperator !== null) {
+        checkResult();
+    }
+    storeNum1 = secondDisplay.innerText;
+    currentOperator = e.target.dataset.value;
+    firstDisplay.innerText = `${storeNum1} ${currentOperator}`;
+    resetCondition = true;
+}
+
+function checkResult() {
+    if (currentOperator === null || resetCondition == true) {
+        return
+    }
+    storeNum2 = secondDisplay.innerText;
+    secondDisplay.innerText = operate(currentOperator, storeNum1, storeNum2);
+    firstDisplay.innerText = `${storeNum1} ${currentOperator} ${storeNum2} =`;
+    currentOperator = null;
 }
 
 let result = 0;
-function operate(a, b, ope) {
-    storeNum2 = [];
-    storeNum2.push(...num);
-    storeNum2 = parseInt(storeNum2.join(''));
+function operate(operator, a, b) {
+    a = Number(storeNum1);
+    b = Number(storeNum2);
+    operator = currentOperator;
     switch (operator) {
         case '/':
-            result = div(storeNum1, storeNum2);
-            storeNum1 = [];
-            num = [];
-            operator = "";
-            firstDisplay.innerText = '';
-            firstDisplay.innerText = result;
-            secondDisplay.innerText = result;
-            storeNum1 = result.toString().split('');
-            storeNum2 = [];
+            result = div(a, b);
             break;
         case '*':
-            result = mul(storeNum1, storeNum2);
-            storeNum1 = [];
-            num = [];
-            operator = "";
-            firstDisplay.innerText = '';
-            firstDisplay.innerText = result;
-            secondDisplay.innerText = result;
-            storeNum1 = result.toString().split('');
-            storeNum2 = [];
+            result = mul(a, b);
             break;
         case '+':
-            result = add(storeNum1, storeNum2);
-            storeNum1 = [];
-            num = [];
-            operator = "";
-            firstDisplay.innerText = '';
-            firstDisplay.innerText = result;
-            secondDisplay.innerText = result;
-            storeNum1 = result.toString().split('');
-            storeNum2 = [];
+            result = add(a, b);
             break;
         case '-':
-            result = sub(storeNum1, storeNum2);
-            storeNum1 = [];
-            num = [];
-            operator = "";
-            firstDisplay.innerText = '';
-            firstDisplay.innerText = result;
-            secondDisplay.innerText = result;
-            storeNum1 = result.toString().split('');
-            storeNum2 = [];
+            result = sub(a, b);
             break;
     }
-    return num;
+    return result;
 }
 
 function add(a, b) {
