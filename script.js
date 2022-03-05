@@ -110,3 +110,30 @@ function mul(a, b) {
 function div(a, b) {
     return a / b;
 }
+
+
+// Added keyboard support
+window.addEventListener('keydown', keyboardInput);
+
+function keyboardInput(e) {
+    e.target.dataset.value = e.key;
+    if (e.key >= 0 && e.key <= 9) {
+        digit(e);
+    }
+    if (e.key == '.') {
+        decimal(e);
+    }
+
+    if (e.key == '+' || e.key == '-' || e.key == '*' || e.key == '/') {
+        operation(e);
+    }
+    if (e.key == 'Backspace') {
+        removeItem(e);
+    }
+    if (e.key == 'Enter') {
+        checkResult(e);
+    }
+    if (e.key == 'Escape') {
+        cls(e);
+    }
+}

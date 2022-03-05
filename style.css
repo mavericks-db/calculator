@@ -99,6 +99,10 @@
     font-size: 30px;
 }
 
+.operatorBtn, .equalBtn {
+    background-color: orange;
+}
+
 .keypadBtn:hover {
     background-color: lightblue;
     cursor: pointer;
