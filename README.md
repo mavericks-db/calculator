@@ -2,7 +2,7 @@
 
 # Calculator
 
-> This is an on-screen calculator using HTML, CSS and JavaScript.
+> This is an on-screen calculator using HTML, Sass and JavaScript.
 
 
 ## Built With
